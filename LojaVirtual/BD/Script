@@ -37,3 +37,18 @@ create table forma_pgto
  fpg_intervalo_dias integer,
  fpg_percentual_acres float
 );
+
+CREATE TABLE end_estado
+(
+  est_id 		serial 		NOT NULL		PRIMARY KEY,
+  est_nome 		varchar(30),
+  est_sigla 	char(2)
+);
+
+CREATE TABLE end_cidade
+(
+  cid_id 		serial 		NOT NULL		PRIMARY KEY,
+  est_id 		integer 	NOT NULL,
+  cid_nome 		varchar(80),
+  CONSTRAINT fk_est_cid FOREIGN KEY (est_id) REFERENCES end_estado (est_id)
+);
