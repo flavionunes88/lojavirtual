@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Pessoa {
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue (strategy = GenerationType.IDENTITY) //Acho que é para definir parametro unico de identificação
 	@Column (name="pes_id")
 	private int id;
 	@Column (name="pes_nome", length = 60, nullable = true)
