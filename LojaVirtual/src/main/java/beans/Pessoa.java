@@ -6,7 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table (name="Pessoa")
+@Table (name="Pessoa") //Declarando a tabela da classe pessoa
 public class Pessoa {
 
 	@Id
