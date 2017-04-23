@@ -7,7 +7,11 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.postgresql.jdbc2.EscapedFunctions;
+
 import persistencia.PessoaDAO;
+import beans.Cidade;
+import beans.Estado;
 import beans.Fone;
 import beans.Pessoa;
 
@@ -18,6 +22,10 @@ public class PessoaCtrl implements Serializable {
 	private static final long serialVersionUID = 1L;
 		private Pessoa pessoa;
 		private Fone fone;
+		private Estado uf;
+		
+		private List<Estado> estado;
+		private List<Cidade> cidade;
 		
 		public List<Pessoa> getListagem(){
 			return PessoaDAO.listagem("");
@@ -30,18 +38,18 @@ public class PessoaCtrl implements Serializable {
 				return actionInserir();
 			}else{
 				PessoaDAO.alterar(pessoa);
-				return "lista_pessoa";
+				return "/pessoa/lista_pessoa";
 			}		
 		}
 		
 		public String actionInserir(){
 			pessoa = new Pessoa();
-			return "form_pessoa";
+			return "/pessoa/lista_pessoa";
 		}
 		
-		public String actionExcluir(Pessoa p){
-			PessoaDAO.excluir(p);
-			return "lista_pessoa";
+		public String actionExcluir(){
+			PessoaDAO.excluir(pessoa);
+			return "/pessoa/lista_pessoa";
 		}
 		
 		public String actionAlterar(Pessoa p){
@@ -76,6 +84,30 @@ public class PessoaCtrl implements Serializable {
 
 		public void setFone(Fone fone) {
 			this.fone = fone;
+		}
+
+		public Estado getUf() {
+			return uf;
+		}
+
+		public void setUf(Estado uf) {
+			this.uf = uf;
+		}
+
+		public List<Estado> getEstado() {
+			return estado;
+		}
+
+		public void setEstado(List<Estado> estado) {
+			this.estado = estado;
+		}
+
+		public List<Cidade> getCidade() {
+			return cidade;
+		}
+
+		public void setCidade(List<Cidade> cidade) {
+			this.cidade = cidade;
 		}
 
 

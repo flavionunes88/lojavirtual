@@ -5,12 +5,12 @@ import java.util.List;
 
 import javax.persistence.*;
 
-@Entity
-@Table (name="Pessoa") //Declarando a tabela da classe pessoa
+@Entity 		//Define que a classe Pessoa será uma tabela no banco de dados
+@Table (name="Pessoa") 
 public class Pessoa {
 
-	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY) //Acho que é para definir parametro unico de identificação
+	@Id //Define um atributo identificador na tabela
+	@GeneratedValue (strategy = GenerationType.IDENTITY) //Define a forma que o atributo identificador irá fazer o incremento
 	@Column (name="pes_id")
 	private int id;
 	@Column (name="pes_nome", length = 60, nullable = true)
