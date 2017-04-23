@@ -129,34 +129,20 @@
 						maxlength="30" />
 
 
-					<p:outputLabel value="UF" for="uf" />
-					<p:selectOneMenu id="uf"
-						value="#{pessoaCtrl.pessoa}">
-						<f:selectItem itemLabel="Selecione um estado" />
-						<f:selectItems value="#{cadastroProdutoBean.categoriasRaizes}"
-							var="categoria" itemValue="#{categoria}"
-							itemLabel="#{categoria.descricao}" />
-						<p:ajax listener="#{cadastroProdutoBean.carregarSubcategorias}"
-							update="subcategoria" />
+					<p:outputLabel value="UF" />
+					<p:selectOneMenu filter="true" value="#{pessoaCtrl.cidade.estado}">
+						<f:selectItem noSelectionOption="true" itemLabel="Selecione um Estado" />
+						<f:selectItems value="#{pessoaCtrl.estados}" var="estado"
+						itemValue="#{estado}" itemLabel="#{estado.nome}" />
 					</p:selectOneMenu>
 
-					<p:outputLabel value="Subcategoria" for="subcategoria" />
-					<p:selectOneMenu id="subcategoria"
-						value="#{cadastroProdutoBean.produto.categoria}">
-						<f:selectItem itemLabel="Selecione a subcategoria" />
-						<f:selectItems value="#{cadastroProdutoBean.subcategorias}"
-							var="subcategoria" itemValue="#{subcategoria}"
-							itemLabel="#{subcategoria.descricao}" />
+					<p:outputLabel value="Cidade" />
+					<p:selectOneMenu filter="true" value="#{pessoaCtrl.cidade.estado}">
+						<f:selectItem itemValue="" itemLabel="Selecione a Cidade" />
 					</p:selectOneMenu>
 
-<!-- 
-					<h:outputLabel value="UF" />
-					<p:inputText value="#{pessoaCtrl.pessoa.uf}" size="6" maxlength="2" />
-					<h:outputLabel value="Cidade" />
-					<p:inputText value="#{pessoaCtrl.pessoa.cidade}" size="6"
-					maxlength="30" />
--->
-	 				<h:outputLabel value="CEP" />
+
+					<h:outputLabel value="CEP" />
 					<p:inputText value="#{pessoaCtrl.pessoa.cep}" size="6"
 						maxlength="9" />
 					<h:outputLabel value="E-mail" />

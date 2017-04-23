@@ -15,7 +15,7 @@ public class Cidade {
 	
 	@ManyToOne // Define um relacionamento de Muitos para Um
 	@JoinColumn(name="est_id") //Define caracteristicas do atributo da tabela quando se utiliza relacionamentos, no caso acima, o atributo que irá conter a chave estrangeira terá o nome de “est_id”
-	private Estado estado;
+	private End_Estado end_Estado;
 
 	
 	public int getId() {
@@ -34,12 +34,12 @@ public class Cidade {
 		this.nome = nome;
 	}
 
-	public Estado getEstado() {
-		return estado;
+	public End_Estado getEstado() {
+		return end_Estado;
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public void setEstado(End_Estado end_Estado) {
+		this.end_Estado = end_Estado;
 	}
 	
 	

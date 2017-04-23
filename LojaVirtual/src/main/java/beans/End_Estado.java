@@ -4,8 +4,8 @@ import javax.persistence.*;
 
 
 @Entity
-@Table (name="Estado") //Declarando a tabela da classe estado
-public class Estado {
+@Table (name="End_Estado") //Declarando a tabela da classe estado
+public class End_Estado {
 
 
 	@Id
@@ -14,7 +14,7 @@ public class Estado {
 	private int id;
 	@Column (name="est_nome", length = 30, nullable = true)
 	private String nome;
-	@Column (name="pes_sigla", length = 2, nullable = true)
+	@Column (name="est_sigla", length = 2, nullable = true)
 	private String sigla;
 
 	

@@ -30,5 +30,6 @@
 		<mapping class="beans.Pessoa" />
 		<mapping class="beans.Fone"/>
 		<mapping class="beans.FormaPgto" />
+		<mapping class="beans.End_Estado" />
 	</session-factory>
 </hibernate-configuration>
