@@ -3,7 +3,7 @@ package beans;
 import javax.persistence.*;
 
 @Entity
-@Table (name="Estado") //Declarando a tabela da classe estado
+@Table (name="Cidade") //Declarando a tabela da classe estado
 public class Cidade {
 
 	@Id
@@ -18,6 +18,14 @@ public class Cidade {
 	private End_Estado end_Estado;
 
 	
+	public End_Estado getEnd_Estado() {
+		return end_Estado;
+	}
+
+	public void setEnd_Estado(End_Estado end_Estado) {
+		this.end_Estado = end_Estado;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -34,13 +42,6 @@ public class Cidade {
 		this.nome = nome;
 	}
 
-	public End_Estado getEstado() {
-		return end_Estado;
-	}
 
-	public void setEstado(End_Estado end_Estado) {
-		this.end_Estado = end_Estado;
-	}
-	
 	
 }

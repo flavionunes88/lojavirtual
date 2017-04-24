@@ -6,7 +6,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import org.jboss.logging.Messages;
 
 import persistencia.EstadoDAO;
 import persistencia.PessoaDAO;
@@ -28,18 +27,28 @@ public class PessoaCtrl implements Serializable {
 	private List<End_Estado> end_Estados;
 	private List<Cidade> cidades;
 
+	// Métodos de ações e controles
+
 	public List<Pessoa> getListagem() {
 		return PessoaDAO.listagem("");
 	}
 
 	public String actionGravar() {
 
-		if (pessoa.getId() == 0) {
-			PessoaDAO.inserir(pessoa);
-			return actionInserir();
-		} else {
-			PessoaDAO.alterar(pessoa);
-			return "/pessoa/lista_pessoa";
+		try {
+			if (pessoa.getId() == 0) {
+				PessoaDAO.inserir(pessoa);
+				return actionInserir();
+			} else {
+				PessoaDAO.alterar(pessoa);
+				return "/pessoa/lista_pessoa";
+			}
+		  	
+		} catch (RuntimeException erro) {
+			System.out.println("Erro ao tentar gravar uma nova pessoa.");
+			erro.printStackTrace();
+			
+			return null;
 		}
 	}
 
@@ -47,14 +56,16 @@ public class PessoaCtrl implements Serializable {
 
 		try {
 			pessoa = new Pessoa();
+			cidade = new Cidade();
 			EstadoDAO estadodao = new EstadoDAO();
 			end_Estados = estadodao.listagem();
 
 			return "/pessoa/lista_pessoa";
 		} catch (RuntimeException erro) {
-            System.out.println("Erro ao tentar criar uma nova pessoa.");
+			System.out
+					.println("Erro ao tentar carregar Cidades e/ou Estados ao abrir o formulário de pessoa.");
 			erro.printStackTrace();
-          return null;
+			return null;
 		}
 	}
 
@@ -66,14 +77,6 @@ public class PessoaCtrl implements Serializable {
 	public String actionAlterar(Pessoa p) {
 		pessoa = p;
 		return "form_pessoa";
-	}
-
-	public Pessoa getPessoa() {
-		return pessoa;
-	}
-
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
 	}
 
 	public String actionInserirFone() {
@@ -91,6 +94,16 @@ public class PessoaCtrl implements Serializable {
 		return "form_pessoa";
 	}
 
+	// Métodos Getters e Setters
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
 	public Fone getFone() {
 		return fone;
 	}
@@ -99,11 +112,11 @@ public class PessoaCtrl implements Serializable {
 		this.fone = fone;
 	}
 
-	public End_Estado getEstado() {
+	public End_Estado getEnd_Estado() {
 		return end_Estado;
 	}
 
-	public void setEstado(End_Estado end_Estado) {
+	public void setEnd_Estado(End_Estado end_Estado) {
 		this.end_Estado = end_Estado;
 	}
 
@@ -115,11 +128,11 @@ public class PessoaCtrl implements Serializable {
 		this.cidade = cidade;
 	}
 
-	public List<End_Estado> getEstados() {
+	public List<End_Estado> getEnd_Estados() {
 		return end_Estados;
 	}
 
-	public void setEstados(List<End_Estado> end_Estados) {
+	public void setEnd_Estados(List<End_Estado> end_Estados) {
 		this.end_Estados = end_Estados;
 	}
 

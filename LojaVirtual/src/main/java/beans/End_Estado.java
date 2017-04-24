@@ -18,6 +18,11 @@ public class End_Estado {
 	private String sigla;
 
 	
+	@Override
+	public String toString() {
+	    return String.format("%s[id=%d]", getClass().getSimpleName(), getId());
+	}
+	
 	public int getId() {
 		return id;
 	}

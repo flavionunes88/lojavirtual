@@ -130,17 +130,22 @@
 
 
 					<p:outputLabel value="UF" />
-					<p:selectOneMenu filter="true" value="#{pessoaCtrl.cidade.estado}">
+					<p:selectOneMenu filter="true" value="#{pessoaCtrl.cidade.end_Estado}"
+					  converter="omnifaces.SelectItemsConverter">
 						<f:selectItem noSelectionOption="true" itemLabel="Selecione um Estado" />
-						<f:selectItems value="#{pessoaCtrl.estados}" var="estado"
-						itemValue="#{estado}" itemLabel="#{estado.nome}" />
+						<f:selectItems value="#{pessoaCtrl.end_Estados}" var="estado"
+						itemValue="#{estado}" itemLabel="#{estado.nome} - #{estado.sigla}" />
 					</p:selectOneMenu>
-
+					
+					<h:outputLabel value="Cidade" />
+					<p:inputText value="#{pessoaCtrl.pessoa.cidade}" size="6"
+						maxlength="9" />
+<!-- 
 					<p:outputLabel value="Cidade" />
-					<p:selectOneMenu filter="true" value="#{pessoaCtrl.cidade.estado}">
+					<p:selectOneMenu filter="true" value="#{pessoaCtrl.cidade.end_Estado}">
 						<f:selectItem itemValue="" itemLabel="Selecione a Cidade" />
 					</p:selectOneMenu>
-
+ -->
 
 					<h:outputLabel value="CEP" />
 					<p:inputText value="#{pessoaCtrl.pessoa.cep}" size="6"
