@@ -3,7 +3,7 @@ package beans;
 import javax.persistence.*;
 
 @Entity
-@Table (name="Cidade") //Declarando a tabela da classe estado
+@Table (name="end_cidade") //Declarando a tabela da classe estado
 public class Cidade {
 
 	@Id

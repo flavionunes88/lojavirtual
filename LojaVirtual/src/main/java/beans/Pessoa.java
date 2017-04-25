@@ -28,7 +28,7 @@ public class Pessoa {
 	@Column (name="pes_cidade", length = 30)
 	private String cidade;
 	@Column (name="pes_uf", length = 2)
-	private char uf;
+	private String uf;
 	@Column (name="pes_cep")
 	private int cep;
 	@Column (name="pes_email", length = 40)
@@ -41,6 +41,7 @@ public class Pessoa {
 	//Relacionamento de 1 para vários
 	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, fetch=FetchType.EAGER) //cascade significa que quando excluir um pessoa da tabela, todos os telefone também serão excluídos.
 	private List<Fone> fones = new ArrayList<Fone>();
+	
 	
 	
 	public int getId() {
@@ -91,10 +92,10 @@ public class Pessoa {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	public char getUf() {
+	public String getUf() {
 		return uf;
 	}
-	public void setUf(char uf) {
+	public void setUf(String uf) {
 		this.uf = uf;
 	}
 	public int getCep() {
