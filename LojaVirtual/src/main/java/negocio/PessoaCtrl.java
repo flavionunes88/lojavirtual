@@ -80,10 +80,6 @@ public class PessoaCtrl implements Serializable {
 		return "/pessoa/lista_pessoa";
 	}
 
-	public String actionAlterar(Pessoa p) {
-		pessoa = p;
-		return "form_pessoa";
-	}
 
 	public String actionInserirFone() {
 		Fone fone = new Fone();

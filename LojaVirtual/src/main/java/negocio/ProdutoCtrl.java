@@ -23,30 +23,30 @@ public class ProdutoCtrl implements Serializable{
 	
 	public String actionGravar(){
 		
+		System.out.println("ID = " + produto.getId());
+		System.out.println("Nome = " + produto.getNome());
+		System.out.println("Preco = " + produto.getPreco());
+		
 		if(produto.getId() == 0){
 			ProdutoDAO.inserir(produto);
 			return actionInserir();
 		}else{
 			ProdutoDAO.alterar(produto);
-			return "lista_produto";
+			return "/produto/lista_produto";
 		}		
 	}
 	
 	public String actionInserir(){
 		produto = new Produto();
-		return "form_produto";
+		return "/produto/lista_produto";
 	}
 	
-	public String actionExcluir(Produto p){
-		ProdutoDAO.excluir(p);
-		return "lista_produto";
+	public String actionExcluir(){
+		ProdutoDAO.excluir(produto);
+		return "/produto/lista_produto";
 	}
 	
-	public String actionAlterar(Produto p){
-		produto = p;
-		return "form_produto";
-	}
-	
+		
 	public Produto getProduto() {
 		return produto;
 	}
