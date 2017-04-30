@@ -89,7 +89,7 @@ public class PessoaCtrl implements Serializable {
 		Fone fone = new Fone();
 		fone.setPessoa(pessoa);
 		pessoa.getFones().add(fone);
-		return "form_pessoa";
+		return "";
 	}
 
 	public String actionExcluirFone(Fone f) {
@@ -97,7 +97,7 @@ public class PessoaCtrl implements Serializable {
 
 		PessoaDAO.excluirFone(f);
 		pessoa.getFones().remove(f);
-		return "form_pessoa";
+		return "";
 	}
 
 	public void popularCidade() {
