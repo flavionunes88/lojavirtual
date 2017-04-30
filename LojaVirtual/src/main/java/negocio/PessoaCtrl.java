@@ -21,6 +21,7 @@ public class PessoaCtrl implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Pessoa pessoa;
+	private Cidade cidade;
 	private Fone fone;
 	private End_Estado end_Estado;
 
@@ -38,11 +39,8 @@ public class PessoaCtrl implements Serializable {
 		try {
 			if (pessoa.getId() == 0) {
 				
-				
 				pessoa.setUf(end_Estado.getSigla());
-				
-				System.out.println("Pessoa UF: " + pessoa.getUf());
-				System.out.println("Pessoa Cidade: " + pessoa.getCidade());
+				pessoa.setCidade(cidade.getNome());
 				
 				PessoaDAO.inserir(pessoa);
 				return actionInserir();
@@ -71,8 +69,7 @@ public class PessoaCtrl implements Serializable {
 
 			return "/pessoa/lista_pessoa";
 		} catch (RuntimeException erro) {
-			System.out
-					.println("Erro ao tentar carregar Estados ao abrir o formulário de pessoa.");
+			System.out.println("Erro ao tentar carregar Estados ao abrir o formulário de pessoa.");
 			erro.printStackTrace();
 			return null;
 		}
@@ -104,10 +101,13 @@ public class PessoaCtrl implements Serializable {
 	}
 
 	public void popularCidade() {
+		
 		try {
 			if (end_Estado != null) {
 				CidadeDAO cidadedao = new CidadeDAO();
+				
 				cidades = cidadedao.buscaPorEstado(end_Estado.getId());
+				
 			} else {
 				cidades = new ArrayList<>(); //Carregar uma lista vazia de cidades
 			}
@@ -159,4 +159,13 @@ public class PessoaCtrl implements Serializable {
 		this.cidades = cidades;
 	}
 
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
+
+	
 }

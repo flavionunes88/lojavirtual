@@ -43,7 +43,7 @@
 				<h:outputLabel value="Lista de Clientes" />
 				<p:commandButton value="Inserir" icon="icon-novo"
 					actionListener="#{pessoaCtrl.actionInserir}"
-					oncomplete="PF('cadDialog').show()" update=":form:cadDetail">
+					oncomplete="PF('cadDialog').show()" update=":form:cadPessoa">
 				</p:commandButton>
 			</f:facet>
 
@@ -90,10 +90,10 @@
 			</p:column>
 
 			<p:column style="width:32px;text-align: center">
-				<p:commandButton update=":form:cadDetail"
+				<p:commandButton update=":form:cadPessoa"
 					oncomplete="PF('cadDialog').show()" icon="ui-icon-search"
 					title="View">
-					<f:setPropertyActionListener value="#{p}"
+					<f:setPropertyActionListener value="#{p}" 
 						target="#{pessoaCtrl.pessoa}"></f:setPropertyActionListener>
 				</p:commandButton>
 			</p:column>
@@ -101,7 +101,7 @@
 
 		<p:dialog header="Cadastro de Clientes" widgetVar="cadDialog"
 			modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-			<p:outputPanel id="cadDetail" style="text-align:center;">
+			<p:outputPanel id="cadPessoa" style="text-align:center;">
 				<h:panelGrid columns="2" style="text-align:left">
 					<h:outputLabel value="Código" />
 					<p:inputText value="#{pessoaCtrl.pessoa.id}" size="6"
@@ -143,7 +143,7 @@
 
 					<p:outputLabel value="Cidade" />
 					<p:selectOneMenu filter="true" id="cidade"
-						value="#{pessoaCtrl.pessoa.cidade}"
+						value="#{pessoaCtrl.cidade}"
 						converter="omnifaces.SelectItemsConverter">
 						<f:selectItem itemValue="" itemLabel="Selecione a Cidade" />
 						<f:selectItems value="#{pessoaCtrl.cidades}" var="cidade"

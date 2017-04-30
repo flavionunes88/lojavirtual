@@ -18,6 +18,18 @@ public class Cidade {
 	private End_Estado end_Estado;
 
 	
+	@Override
+	public String toString() {
+	    return String.format("%s[nome=%s]", getClass().getSimpleName(), getNome());
+	}
+	
+/*	public static void main(String[] args) {
+		Cidade teste = new Cidade();
+		teste.setNome("sdfds");
+		System.out.println(teste);
+	}*/
+	
+	
 	public End_Estado getEnd_Estado() {
 		return end_Estado;
 	}
