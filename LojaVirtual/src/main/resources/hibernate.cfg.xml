@@ -7,10 +7,8 @@
 	<session-factory>
 		<!-- Configuração da conexão com o banco PostgreSQL e dialeto -->
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-		<property name="hibernate.connection.username">postgres</property>
-		<property name="hibernate.connection.password">postbd</property>
-		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/lojavirtual</property>
+		<property name="connection.datasource">java:comp/env/jdbc/lojavirtual</property>
+		
 
 		<!-- Usando as configurações do C3PO para pool de conexões -->
 		<property name="c3po.min_size">5</property>

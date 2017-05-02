@@ -46,7 +46,7 @@ public class PessoaCtrl implements Serializable {
 				return actionInserir();
 			} else {
 				PessoaDAO.alterar(pessoa);
-				return "/pessoa/lista_pessoa";
+				return "/publico/form_cliente";
 			}
 
 		} catch (RuntimeException erro) {
@@ -77,7 +77,7 @@ public class PessoaCtrl implements Serializable {
 
 	public String actionExcluir() {
 		PessoaDAO.excluir(pessoa);
-		return "/pessoa/lista_pessoa";
+		return "/publico/form_cliente";
 	}
 
 
