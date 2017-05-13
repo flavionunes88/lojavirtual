@@ -39,8 +39,8 @@ public class PessoaCtrl implements Serializable {
 		try {
 			if (pessoa.getId() == 0) {
 				
-				pessoa.setUf(end_Estado.getSigla());
-				pessoa.setCidade(cidade.getNome());
+				//pessoa.setUf(end_Estado.getSigla());
+				//pessoa.setCidade(cidade.getNome());
 				
 				PessoaDAO.inserir(pessoa);
 				return actionInserir();
@@ -67,7 +67,7 @@ public class PessoaCtrl implements Serializable {
 
 			cidades = new ArrayList<>(); //Carregar uma lista vazia de cidades
 
-			return "/pessoa/lista_pessoa";
+			return "/publico/form_cliente";
 		} catch (RuntimeException erro) {
 			System.out.println("Erro ao tentar carregar Estados ao abrir o formulário de pessoa.");
 			erro.printStackTrace();
@@ -116,7 +116,9 @@ public class PessoaCtrl implements Serializable {
 	// Métodos Getters e Setters
 
 	public Pessoa getPessoa() {
-		return pessoa;
+	
+		
+			return pessoa;
 	}
 
 	public void setPessoa(Pessoa pessoa) {
